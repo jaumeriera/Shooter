@@ -31,6 +31,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 3212491226316543493}
   - {fileID: 2570959963872697543}
   m_Father: {fileID: 2575008864455422794}
   m_RootOrder: 0
@@ -49,6 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   totalAmmo: 5
   timeToReload: 4
+  weaponReloadTime: {fileID: 11400000, guid: 0d865c548a574f4438bfbb380bbd9a9c, type: 2}
   UpdateAmmo: {fileID: 11400000, guid: 185a8502698984447a018c1907d3fdf8, type: 2}
   StartReloadAnim: {fileID: 11400000, guid: 3a9a8ef34c7f3364ba1f232f78a580ac, type: 2}
   currentAmmo: {fileID: 11400000, guid: 1a58b38eb425694499dd5d1ecd7790d4, type: 2}
@@ -144,7 +146,6 @@ Transform:
   - {fileID: 2575008864217904326}
   - {fileID: 2575008864165532974}
   - {fileID: 8747225502307286727}
-  - {fileID: 3212491226316543493}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 18, z: 0}
@@ -219,6 +220,7 @@ MonoBehaviour:
   currentAmmo: {fileID: 11400000, guid: 1a58b38eb425694499dd5d1ecd7790d4, type: 2}
   range: 50
   cooldown: 1.5
+  isReloading: {fileID: 11400000, guid: 3f100bbe05d1dd54ab1f33ed6abff47b, type: 2}
   ReloadWeapon: {fileID: 11400000, guid: edc0e170a41875e4f81262f6b96bd0bb, type: 2}
 --- !u!1 &2575008864165532977
 GameObject:
@@ -550,7 +552,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4968264157466278, guid: c2ab92584ea61e6449efbbf1366854f2, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4968264157466278, guid: c2ab92584ea61e6449efbbf1366854f2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -604,7 +606,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 2575008863911031480}
+    m_TransformParent: {fileID: 2575008863166833155}
     m_Modifications:
     - target: {fileID: 157586, guid: 2574ca206a571a342a7fab69fdfb87aa, type: 3}
       propertyPath: m_Name
@@ -612,23 +614,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 488920, guid: 2574ca206a571a342a7fab69fdfb87aa, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 488920, guid: 2574ca206a571a342a7fab69fdfb87aa, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.30660057
+      value: 0.00026974455
       objectReference: {fileID: 0}
     - target: {fileID: 488920, guid: 2574ca206a571a342a7fab69fdfb87aa, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.4110999
+      value: 0.035099983
       objectReference: {fileID: 0}
     - target: {fileID: 488920, guid: 2574ca206a571a342a7fab69fdfb87aa, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.1711998
+      value: 0.8513055
       objectReference: {fileID: 0}
     - target: {fileID: 488920, guid: 2574ca206a571a342a7fab69fdfb87aa, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.9999678
       objectReference: {fileID: 0}
     - target: {fileID: 488920, guid: 2574ca206a571a342a7fab69fdfb87aa, type: 3}
       propertyPath: m_LocalRotation.x
@@ -636,7 +638,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 488920, guid: 2574ca206a571a342a7fab69fdfb87aa, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.008028418
       objectReference: {fileID: 0}
     - target: {fileID: 488920, guid: 2574ca206a571a342a7fab69fdfb87aa, type: 3}
       propertyPath: m_LocalRotation.z

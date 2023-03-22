@@ -25,6 +25,8 @@ public class Shoot : MonoBehaviour
 
     [Header("Reload")]
     [SerializeField]
+    BoolVariable isReloading;
+    [SerializeField]
     GameEvent ReloadWeapon;
 
     RaycastHit hit;
@@ -53,7 +55,7 @@ public class Shoot : MonoBehaviour
                 }
             }
 
-        } else if (Input.GetButtonDown("Reload")) {
+        } else if (Input.GetButtonDown("Reload") && !isReloading.Value) {
             ReloadWeapon.Raise();
         }
     }

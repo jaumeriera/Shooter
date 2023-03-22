@@ -12,6 +12,8 @@ public class Magazine : MonoBehaviour
     float timeToReload;
 
     [SerializeField]
+    FloatVariable weaponReloadTime;
+    [SerializeField]
     GameEvent UpdateAmmo;
     [SerializeField]
     GameEvent StartReloadAnim;
@@ -33,7 +35,13 @@ public class Magazine : MonoBehaviour
     }
 
     private IEnumerator DoReload() {
+        // This asignation is done each time because in the future maybe we would
+        // like to implement more weapons, in this case, we just need to change 
+        // the scriptable object and before reload, we send the correct reload
+        // time
+        weaponReloadTime.Value = timeToReload;
         currentAmmo.Value = 0;
+
         UpdateAmmo.Raise();
         StartReloadAnim.Raise();
         yield return new WaitForSeconds(timeToReload);
