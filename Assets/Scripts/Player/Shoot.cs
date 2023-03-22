@@ -1,3 +1,4 @@
+using FeTo.SOArchitecture;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -11,11 +12,20 @@ public class Shoot : MonoBehaviour
     ParticleSystem smoke;
     [SerializeField]
     Camera mainCamera;
+
     [Header("Shot variables")]
+    [SerializeField]
+    GameEvent shootPerformed;
+    [SerializeField]
+    FloatVariable currentAmmo;
     [SerializeField]
     float range;
     [SerializeField]
     float cooldown = 1f;
+
+    [Header("Reload")]
+    [SerializeField]
+    GameEvent ReloadWeapon;
 
     RaycastHit hit;
     float t;
@@ -32,6 +42,7 @@ public class Shoot : MonoBehaviour
         }
 
         if (Input.GetButtonDown("Fire1") && CanShoot()) {
+            shootPerformed.Raise();
             smoke.Stop();
             smoke.Play();
             // TODO play sound
@@ -42,15 +53,16 @@ public class Shoot : MonoBehaviour
                 }
             }
 
+        } else if (Input.GetButtonDown("Reload")) {
+            ReloadWeapon.Raise();
         }
     }
 
     private bool CanShoot() {
-        print(t);
         return HasEnoughAmmo() && t >= cooldown;
     }
 
     private bool HasEnoughAmmo() {
-        return true; // TODO implement
+        return currentAmmo.Value > 0;
     }
 }
