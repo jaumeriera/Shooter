@@ -24,7 +24,7 @@ public class Shoot : MonoBehaviour
         t = cooldown;
     }
 
-    void FixedUpdate()
+    void Update()
     {
         // Check this in order to prevent float overflow
         if (t < cooldown) {
@@ -32,7 +32,7 @@ public class Shoot : MonoBehaviour
         }
 
         if (Input.GetButtonDown("Fire1") && CanShoot()) {
-
+            smoke.Stop();
             smoke.Play();
             // TODO play sound
             t = 0;
@@ -46,6 +46,7 @@ public class Shoot : MonoBehaviour
     }
 
     private bool CanShoot() {
+        print(t);
         return HasEnoughAmmo() && t >= cooldown;
     }
 
