@@ -21,6 +21,10 @@ public class StaminaManager : MonoBehaviour
     FloatVariable runCostVariable;
     [SerializeField]
     FloatVariable jumpCostVariable;
+    [SerializeField]
+    BoolVariable canJump;
+    [SerializeField]
+    BoolVariable canRun;
 
     [SerializeField]
     GameEvent UpdateStaminaUI;
@@ -32,33 +36,44 @@ public class StaminaManager : MonoBehaviour
         currentStamina.Value = totalStamina;
         jumpCostVariable.Value = jumpCost;
         runCostVariable.Value = runCost;
+        canJump.Value = true;
+        canRun.Value = true;
     }
 
     public void ApplyJump() {
         currentStamina.Value -= jumpCostVariable.Value;
         UpdateStaminaUI.Raise();
+        canJump.Value = currentStamina.Value > jumpCostVariable.Value;
     }
 
     public void ApplyRun() {
         currentStamina.Value -= runCostVariable.Value * Time.deltaTime;
         UpdateStaminaUI.Raise();
+        canRun.Value = currentStamina.Value > runCostVariable.Value * Time.deltaTime;
     }
 
     public void RegenerateStaminaBar() {
-        regenerationCoroutine = StartCoroutine(DoRenenerateStamina());
+        if (regenerationCoroutine == null) {
+            regenerationCoroutine = StartCoroutine(DoRenenerateStamina());
+        }
     }
 
     private IEnumerator DoRenenerateStamina() {
         yield return new WaitForSeconds(timeToStartRegeneration);
         while (currentStamina.Value < totalStamina) {
             currentStamina.Value += staminaRegeneration * Time.deltaTime;
+            UpdateStaminaUI.Raise();
+            canRun.Value = currentStamina.Value > runCostVariable.Value * Time.deltaTime;
+            canJump.Value = currentStamina.Value > jumpCostVariable.Value;
             yield return null;
         }
+        regenerationCoroutine = null;
     }
 
     public void StopRegeneratingStamina() {
         if (regenerationCoroutine != null) {
             StopCoroutine(regenerationCoroutine);
+            regenerationCoroutine = null;
         }
     }
 

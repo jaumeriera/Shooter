@@ -551,7 +551,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd495de8d10784f468795e94ae0320e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalStamina: 80
+  totalStamina: 100
   jumpCost: 30
   runCost: 10
   timeToStartRegeneration: 1.5
@@ -619,6 +619,18 @@ MonoBehaviour:
       - m_Target: {fileID: 3567323076930149772}
         m_TargetAssemblyTypeName: StaminaManager, Assembly-CSharp
         m_MethodName: ApplyJump
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3567323076930149772}
+        m_TargetAssemblyTypeName: StaminaManager, Assembly-CSharp
+        m_MethodName: StopRegeneratingStamina
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1307,6 +1319,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4968264157466278, guid: c2ab92584ea61e6449efbbf1366854f2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 64857577736127294, guid: c2ab92584ea61e6449efbbf1366854f2, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

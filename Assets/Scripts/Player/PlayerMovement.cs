@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float sprintBoost = 8f;
 
     [SerializeField] BoolVariable isRunnung;
+    [SerializeField] BoolVariable canRun;
     [SerializeField] GameEvent running;
     [SerializeField] GameEvent startStaminaRegeneration;
 
@@ -22,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
         
         Vector3 move = transform.right * xMove + transform.forward * zMove;
 
-        if (Input.GetButton("Run")) {
+        if (Input.GetButton("Run") && canRun.Value) {
             controller.Move(move * (speed + sprintBoost) * Time.deltaTime);
             isRunnung.Value = true;
             running.Raise();

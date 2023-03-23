@@ -9,8 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e81a2c01edea40c41b9a9b34d136bc14, type: 3}
-  m_Name: Stamina
+  m_Script: {fileID: 11500000, guid: 78fc8c6d16864d04eb4c54c2f80f1042, type: 3}
+  m_Name: CanRun
   m_EditorClassIdentifier: 
-  DeveloperDescription: 
-  Value: 80.02155
+  Value: 0

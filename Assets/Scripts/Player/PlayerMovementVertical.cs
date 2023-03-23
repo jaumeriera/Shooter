@@ -12,6 +12,8 @@ public class PlayerMovementVertical: MonoBehaviour
     GameEvent jumping;
     [SerializeField]
     GameEvent startStaminaRegeneration;
+    [SerializeField]
+    BoolVariable canJump;
 
     [SerializeField] 
     Transform groundCheck;
@@ -56,7 +58,7 @@ public class PlayerMovementVertical: MonoBehaviour
     }
 
     private bool MustPerformJump() {
-        return Input.GetButtonDown("Jump") && isGrounded;
+        return Input.GetButtonDown("Jump") && isGrounded && canJump.Value;
     }
 
     private void Jump() {
