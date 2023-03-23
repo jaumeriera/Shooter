@@ -8,6 +8,10 @@ public class PlayerMovementVertical: MonoBehaviour
 {
     [SerializeField] 
     CharacterController controller;
+    [SerializeField]
+    GameEvent jumping;
+    [SerializeField]
+    GameEvent startStaminaRegeneration;
 
     [SerializeField] 
     Transform groundCheck;
@@ -26,6 +30,9 @@ public class PlayerMovementVertical: MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!isGrounded && IsTouchingTheGround()) {
+            startStaminaRegeneration.Raise();
+        }
         isGrounded = IsTouchingTheGround();
 
         ReduceVerticalSpeed();
@@ -54,6 +61,7 @@ public class PlayerMovementVertical: MonoBehaviour
 
     private void Jump() {
         velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+        jumping.Raise();
     }
 
     private void Fall() {

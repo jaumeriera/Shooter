@@ -429,6 +429,10 @@ GameObject:
   - component: {fileID: 7690550805266771267}
   - component: {fileID: 2033228422487306412}
   - component: {fileID: 7511057405500633430}
+  - component: {fileID: 3567323076930149772}
+  - component: {fileID: 5305268026144635895}
+  - component: {fileID: 8670730904370936332}
+  - component: {fileID: 3983287349114559058}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -488,6 +492,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 6882357072918336765}
   speed: 6
+  sprintBoost: 8
+  isRunnung: {fileID: 11400000, guid: cd0b2eb5021e1574b8e186ba22f82c5b, type: 2}
+  running: {fileID: 11400000, guid: cd7d3311e88ff2042a95ab19b239fabf, type: 2}
+  startStaminaRegeneration: {fileID: 11400000, guid: 945a063ba0027004cb85c4e3db122aa3, type: 2}
 --- !u!114 &2033228422487306412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -501,6 +509,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 6882357072918336765}
+  jumping: {fileID: 11400000, guid: 10140e49c27043c429760b64f92a474b, type: 2}
+  startStaminaRegeneration: {fileID: 11400000, guid: 945a063ba0027004cb85c4e3db122aa3, type: 2}
   groundCheck: {fileID: 8747225502307286727}
   groundDistance: 0.4
   groundMask:
@@ -526,10 +536,126 @@ MonoBehaviour:
   shootPerformed: {fileID: 11400000, guid: 7260a441c04d8b84886c58dfa0e1ec26, type: 2}
   emptyShoot: {fileID: 11400000, guid: 5fe5f525408d53b4cbfa6d63cdd45d16, type: 2}
   currentAmmo: {fileID: 11400000, guid: 1a58b38eb425694499dd5d1ecd7790d4, type: 2}
-  range: 1000
   cooldown: 1.5
   isReloading: {fileID: 11400000, guid: 3f100bbe05d1dd54ab1f33ed6abff47b, type: 2}
   ReloadWeapon: {fileID: 11400000, guid: edc0e170a41875e4f81262f6b96bd0bb, type: 2}
+--- !u!114 &3567323076930149772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2575008863911031483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd495de8d10784f468795e94ae0320e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  totalStamina: 80
+  jumpCost: 30
+  runCost: 10
+  timeToStartRegeneration: 1.5
+  staminaRegeneration: 5
+  currentStamina: {fileID: 11400000, guid: dc1793f6bb543aa4289e7a93004806d8, type: 2}
+  runCostVariable: {fileID: 11400000, guid: 1fca90a5ee850e9438a3d30cf5398109, type: 2}
+  jumpCostVariable: {fileID: 11400000, guid: 7e55263e13b660e4ea513174ebc12673, type: 2}
+  UpdateStaminaUI: {fileID: 11400000, guid: 72193e0f659092f4c8e448cc41b126bd, type: 2}
+--- !u!114 &5305268026144635895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2575008863911031483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d503f1659a864241868e51ff877a07e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: cd7d3311e88ff2042a95ab19b239fabf, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3567323076930149772}
+        m_TargetAssemblyTypeName: StaminaManager, Assembly-CSharp
+        m_MethodName: ApplyRun
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3567323076930149772}
+        m_TargetAssemblyTypeName: StaminaManager, Assembly-CSharp
+        m_MethodName: StopRegeneratingStamina
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &8670730904370936332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2575008863911031483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d503f1659a864241868e51ff877a07e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 10140e49c27043c429760b64f92a474b, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3567323076930149772}
+        m_TargetAssemblyTypeName: StaminaManager, Assembly-CSharp
+        m_MethodName: ApplyJump
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &3983287349114559058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2575008863911031483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d503f1659a864241868e51ff877a07e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 945a063ba0027004cb85c4e3db122aa3, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3567323076930149772}
+        m_TargetAssemblyTypeName: StaminaManager, Assembly-CSharp
+        m_MethodName: RegenerateStaminaBar
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2575008864165532977
 GameObject:
   m_ObjectHideFlags: 0
