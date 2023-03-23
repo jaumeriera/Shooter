@@ -337,7 +337,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b4ccf5ec727a634f9ee28b9313feef0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalAmmo: 5
+  totalAmmo: 8
   timeToReload: 5
   weaponReloadTime: {fileID: 11400000, guid: 0d865c548a574f4438bfbb380bbd9a9c, type: 2}
   UpdateAmmo: {fileID: 11400000, guid: 185a8502698984447a018c1907d3fdf8, type: 2}
@@ -415,7 +415,7 @@ MonoBehaviour:
   GunTransform: {fileID: 2575008863166833155}
   normalWeaponPosition: {fileID: 9139437997062174931}
   aimPosition: {fileID: 9000356036583838696}
-  animationSpeed: 4
+  animationSpeed: 8
 --- !u!1 &2575008863911031483
 GameObject:
   m_ObjectHideFlags: 0
@@ -526,7 +526,7 @@ MonoBehaviour:
   shootPerformed: {fileID: 11400000, guid: 7260a441c04d8b84886c58dfa0e1ec26, type: 2}
   emptyShoot: {fileID: 11400000, guid: 5fe5f525408d53b4cbfa6d63cdd45d16, type: 2}
   currentAmmo: {fileID: 11400000, guid: 1a58b38eb425694499dd5d1ecd7790d4, type: 2}
-  range: 50
+  range: 1000
   cooldown: 1.5
   isReloading: {fileID: 11400000, guid: 3f100bbe05d1dd54ab1f33ed6abff47b, type: 2}
   ReloadWeapon: {fileID: 11400000, guid: edc0e170a41875e4f81262f6b96bd0bb, type: 2}
@@ -815,7 +815,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48971e3ca898b7147bc4b5e405d7229d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseSensitivity: 100
+  mouseSensitivity: 60
   playerBody: {fileID: 2575008863911031480}
 --- !u!1 &4293984576332282304
 GameObject:

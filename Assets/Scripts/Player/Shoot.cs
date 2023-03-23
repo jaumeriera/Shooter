@@ -21,8 +21,6 @@ public class Shoot : MonoBehaviour
     [SerializeField]
     FloatVariable currentAmmo;
     [SerializeField]
-    float range;
-    [SerializeField]
     float cooldown = 1f;
 
     [Header("Reload")]
@@ -44,7 +42,7 @@ public class Shoot : MonoBehaviour
         if (t < cooldown) {
             t += Time.deltaTime;
         }
-        Debug.DrawRay(mainCamera.transform.position, mainCamera.transform.forward*50, Color.blue);
+
         if (Input.GetButtonDown("Fire1")) {
             if (CanShoot()) {
                 shootPerformed.Raise();
@@ -52,7 +50,7 @@ public class Shoot : MonoBehaviour
                 smoke.Play();
                 // TODO play sound
                 t = 0;
-                if (Physics.Raycast(mainCamera.transform.position, mainCamera.transform.forward, out hit, range)) {
+                if (Physics.Raycast(mainCamera.transform.position, mainCamera.transform.forward, out hit, Mathf.Infinity)) {
                     if (hit.collider.gameObject.layer == (int)Layers.Target) {
                         hit.collider.gameObject.SetActive(false);
                     }
