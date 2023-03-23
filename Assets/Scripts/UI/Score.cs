@@ -1,3 +1,4 @@
+using FeTo.SOArchitecture;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -11,10 +12,15 @@ public class Score : MonoBehaviour
     [SerializeField]
     int scorePerTarget = 50;
 
-    int currentScore = 0;
+    [SerializeField]
+    FloatVariable currentScore;
+
+    private void Start() {
+        currentScore.Value = 0;
+    }
 
     public void UpdateScore() {
-        currentScore += scorePerTarget;
-        scoreText.SetText(currentScore.ToString());
+        currentScore.Value += scorePerTarget;
+        scoreText.SetText(currentScore.Value.ToString());
     }
 }

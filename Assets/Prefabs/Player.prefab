@@ -338,7 +338,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   totalAmmo: 8
-  timeToReload: 5
+  timeToReload: 4
   weaponReloadTime: {fileID: 11400000, guid: 0d865c548a574f4438bfbb380bbd9a9c, type: 2}
   UpdateAmmo: {fileID: 11400000, guid: 185a8502698984447a018c1907d3fdf8, type: 2}
   StartReloadAnim: {fileID: 11400000, guid: 3a9a8ef34c7f3364ba1f232f78a580ac, type: 2}
@@ -433,6 +433,8 @@ GameObject:
   - component: {fileID: 5305268026144635895}
   - component: {fileID: 8670730904370936332}
   - component: {fileID: 3983287349114559058}
+  - component: {fileID: 2049145746}
+  - component: {fileID: 2049145747}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -494,6 +496,7 @@ MonoBehaviour:
   speed: 6
   sprintBoost: 8
   isRunnung: {fileID: 11400000, guid: cd0b2eb5021e1574b8e186ba22f82c5b, type: 2}
+  canRun: {fileID: 11400000, guid: ef8b90aba05e08546b3fe5c77d69c28d, type: 2}
   running: {fileID: 11400000, guid: cd7d3311e88ff2042a95ab19b239fabf, type: 2}
   startStaminaRegeneration: {fileID: 11400000, guid: 945a063ba0027004cb85c4e3db122aa3, type: 2}
 --- !u!114 &2033228422487306412
@@ -511,6 +514,7 @@ MonoBehaviour:
   controller: {fileID: 6882357072918336765}
   jumping: {fileID: 11400000, guid: 10140e49c27043c429760b64f92a474b, type: 2}
   startStaminaRegeneration: {fileID: 11400000, guid: 945a063ba0027004cb85c4e3db122aa3, type: 2}
+  canJump: {fileID: 11400000, guid: b7655dac62f987e4b80fd8a2fc98de22, type: 2}
   groundCheck: {fileID: 8747225502307286727}
   groundDistance: 0.4
   groundMask:
@@ -559,6 +563,8 @@ MonoBehaviour:
   currentStamina: {fileID: 11400000, guid: dc1793f6bb543aa4289e7a93004806d8, type: 2}
   runCostVariable: {fileID: 11400000, guid: 1fca90a5ee850e9438a3d30cf5398109, type: 2}
   jumpCostVariable: {fileID: 11400000, guid: 7e55263e13b660e4ea513174ebc12673, type: 2}
+  canJump: {fileID: 11400000, guid: b7655dac62f987e4b80fd8a2fc98de22, type: 2}
+  canRun: {fileID: 11400000, guid: ef8b90aba05e08546b3fe5c77d69c28d, type: 2}
   UpdateStaminaUI: {fileID: 11400000, guid: 72193e0f659092f4c8e448cc41b126bd, type: 2}
 --- !u!114 &5305268026144635895
 MonoBehaviour:
@@ -668,6 +674,50 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &2049145746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2575008863911031483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d503f1659a864241868e51ff877a07e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 5c43b2151ba35a847914b99a9292c856, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2049145747}
+        m_TargetAssemblyTypeName: EnableMovement, Assembly-CSharp
+        m_MethodName: PlayerFree
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2049145747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2575008863911031483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31aa67f2cc002424b97d31d2fca5f9b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PM: {fileID: 7690550805266771267}
+  PMV: {fileID: 2033228422487306412}
+  S: {fileID: 7511057405500633430}
+  M: {fileID: 1017648648798692729}
 --- !u!1 &2575008864165532977
 GameObject:
   m_ObjectHideFlags: 0
