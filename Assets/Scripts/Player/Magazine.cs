@@ -7,9 +7,7 @@ public class Magazine : MonoBehaviour
 {
     // TODO configure by scriptable
     [SerializeField]
-    int totalAmmo;
-    [SerializeField]
-    float timeToReload;
+    WeaponScriptableObject _settings;
 
     [SerializeField]
     FloatVariable weaponReloadTime;
@@ -21,7 +19,7 @@ public class Magazine : MonoBehaviour
     FloatVariable currentAmmo;
 
     private void Start() {
-        currentAmmo.Value = totalAmmo;
+        currentAmmo.Value = _settings.totalAmmo;
         UpdateAmmo.Raise();
     }
 
@@ -39,13 +37,13 @@ public class Magazine : MonoBehaviour
         // like to implement more weapons, in this case, we just need to change 
         // the scriptable object and before reload, we send the correct reload
         // time
-        weaponReloadTime.Value = timeToReload;
+        weaponReloadTime.Value = _settings.timeToReload;
         currentAmmo.Value = 0;
 
         UpdateAmmo.Raise();
         StartReloadAnim.Raise();
-        yield return new WaitForSeconds(timeToReload);
-        currentAmmo.Value = totalAmmo;
+        yield return new WaitForSeconds(_settings.timeToReload);
+        currentAmmo.Value = _settings.totalAmmo;
         UpdateAmmo.Raise();
     }
 }
